@@ -2,20 +2,32 @@
 
 class Program
 {
+    static void Main(string[] args)
+    {
+        CreditCardValidator creditCardValidator = new CreditCardValidator();
+        creditCardValidator.GetCardNumber();
+    }
+}
+
+ class CreditCardValidator
+{
     public static string card;
 
     static void Main(string[] args)
     {
         Console.Write("Enter card number: ");
         card = Console.ReadLine();
-
-        PaymentSystemIdentifier();
-        BankIdentificationNumber();
-        CardIdentificationNumber();
-        LuhnAlgorithm();
     }
 
-    static void PaymentSystemIdentifier()
+    public void GetCardNumber()
+    {
+        GetPaymentSystemIdentifier();
+        GetBankIdentificationNumber();
+        GetCardIdentificationNumber();
+        GetLuhnAlgorithm();
+    }
+
+    static void GetPaymentSystemIdentifier()
     {
         char[] cardNumber = card.ToCharArray();
         int psi = cardNumber[0];
@@ -41,19 +53,19 @@ class Program
         }
     }
 
-    static void BankIdentificationNumber()
+    static void GetBankIdentificationNumber()
     {
         string bin = card[..6];
         Console.WriteLine($"Bank identification number(BIN) - {bin}");
     }
 
-    static void CardIdentificationNumber()
+    static void GetCardIdentificationNumber()
     {
         string cardID = card[6..15];
         Console.WriteLine($"Card ID - {cardID}");
     }
 
-    static void LuhnAlgorithm()
+    static void GetLuhnAlgorithm()
     {
         int sum = 0;
 
