@@ -13,7 +13,7 @@ class Program
 {
     public static string card;
 
-    static void Main(string[] args)
+    public CreditCardValidator()
     {
         Console.Write("Enter card number: ");
         card = Console.ReadLine();
