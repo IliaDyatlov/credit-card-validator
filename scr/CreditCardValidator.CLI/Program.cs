@@ -1,4 +1,6 @@
-﻿class Program
+﻿namespace CreditCardValidator.CLI;
+
+class Program
 {
     public static void Main()
     {

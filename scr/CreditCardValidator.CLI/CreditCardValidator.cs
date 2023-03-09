@@ -1,4 +1,6 @@
-﻿public class CreditCardValidator
+﻿namespace CreditCardValidator.CLI;
+
+public class CreditCardValidator
 {
     private string _card = string.Empty;
 
@@ -14,15 +16,15 @@
         switch (psi)
         {
             case '2':
-                return "Payment system identifier - World";
+                return "World";
             case '3':
-                return "Payment system identifier - Maestro or American Express";
+                return "Maestro or American Express";
             case '4':
-                return "Payment system identifier - Visa";
+                return "Visa";
             case '5':
-                return "Payment system identifier - Maestro or Master Card";
+                return "Maestro or Master Card";
             case '6':
-                return "Payment system identifier - Maestro or American Express";
+                return "Maestro or American Express";
         }
         return "Payment system identifier belongs to another bank";
     }
@@ -30,7 +32,7 @@
     public string GetBankIdentificationNumber()
     {
         string bin = _card[..6];
-        return $"Bank identification number(BIN) - {bin}";
+        return $"BIN - {bin}";
     }
 
     public string GetCardIdentificationNumber()
