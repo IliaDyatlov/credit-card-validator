@@ -6,6 +6,21 @@ public class CreditCardValidator
 
     public CreditCardValidator(string card)
     {
+        if (string.IsNullOrEmpty(card)) 
+        {
+            throw new ArgumentNullException(nameof(card));
+        }
+
+        if (card.Length < 16 || card.Length >16)
+        {
+            throw new ArgumentOutOfRangeException(nameof(card));
+        }
+
+        if (card.Any(char.IsLetter))
+        {
+            throw new ArgumentException(nameof(card));
+        }
+
         _card = card;
     }
 
@@ -25,20 +40,22 @@ public class CreditCardValidator
                 return "Maestro or Master Card";
             case '6':
                 return "Maestro or American Express";
+            default:
+                return "Unknown";
         }
-        return "Payment system identifier belongs to another bank";
+       
     }
 
     public string GetBankIdentificationNumber()
     {
         string bin = _card[..6];
-        return $"BIN - {bin}";
+        return bin;
     }
 
     public string GetCardIdentificationNumber()
     {
         string cardID = _card[6..15];
-        return $"Card ID - {cardID}";
+        return cardID;
     }
 
     public bool GetLuhnAlgorithm()
